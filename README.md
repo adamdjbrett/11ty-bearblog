@@ -1,3 +1,4 @@
+[![Build and Deploy Eleventy](https://github.com/adamdjbrett/11ty-bearblog/actions/workflows/xmit-deploy.yml/badge.svg)](https://github.com/adamdjbrett/11ty-bearblog/actions/workflows/xmit-deploy.yml)
 # 11ty ʕ•ᴥ•ʔ Bear Blog
 
 An Eleventy 3 + Nunjucks port of [Hugo ʕ•ᴥ•ʔ Bear Blog](https://github.com/janraasch/hugo-bearblog), based on [Bear Blog](https://bearblog.dev).
