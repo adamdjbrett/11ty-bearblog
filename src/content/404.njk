@@ -1,0 +1,42 @@
+---
+title: 404
+permalink: /404.html
+layout: false
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="{{ settings.language or 'en-US' }}">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% include "partials/favicon.njk" %}
+  <title>404</title>
+
+  {% include "partials/seo_tags.njk" %}
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <link rel="alternate" type="application/atom+xml" href="{{ settings.feed.atom }}" title="{{ settings.title }}" />
+  <link rel="alternate" type="application/feed+json" href="{{ settings.feed.json }}" title="{{ settings.title }}" />
+  <link rel="alternate" type="text/plain" href="{{ settings.feed.twtxt }}" title="{{ settings.title }}" />
+
+  {% include "partials/style.njk" %}
+  {% include "partials/custom_head.njk" %}
+</head>
+
+<body>
+  <header>
+    {% include "partials/header.njk" %}
+  </header>
+  <main>
+    <h1>404</h1>
+    <h2>ʕノ•ᴥ•ʔノ ︵ ┻━┻</h2>
+  </main>
+  <footer>
+    {% include "partials/footer.njk" %}
+  </footer>
+  {% include "partials/custom_body.njk" %}
+</body>
+
+</html>

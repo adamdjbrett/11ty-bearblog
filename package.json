@@ -1,15 +1,13 @@
 {
-  "name": "hugo-bearblog",
+  "name": "11ty-bearblog",
   "private": true,
   "version": "1.0.0",
-  "description": "🧸 A [Hugo](https://gohugo.io/)-theme based on [Bear Blog](https://bearblog.dev).",
-  "main": "index.js",
-  "devDependencies": {
-    "js-beautify": "^1.15.4"
-  },
+  "description": "An Eleventy port of Hugo Bear Blog based on Bear Blog.",
+  "type": "module",
   "scripts": {
-    "test": "npm run beautify",
-    "beautify": "js-beautify layouts/**/*.html -r"
+    "build": "eleventy",
+    "dev": "eleventy --serve",
+    "test": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -24,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/janraasch/hugo-bearblog/issues"
   },
-  "homepage": "https://github.com/janraasch/hugo-bearblog#readme"
+  "homepage": "https://github.com/janraasch/hugo-bearblog#readme",
+  "dependencies": {
+    "@11ty/eleventy": "3.1.6",
+    "@11ty/eleventy-img": "6.0.4",
+    "@apleasantview/eleventy-plugin-baseline": "^0.1.0-next.43"
+  }
 }

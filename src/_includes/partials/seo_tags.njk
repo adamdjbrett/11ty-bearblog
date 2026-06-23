@@ -1,0 +1,26 @@
+<!-- Primary Meta Tags -->
+<meta name="title" content="{% if title %}{{ title }}{% else %}{{ settings.title }}{% endif %}" />
+<meta name="description" content="{% if description %}{{ description }}{% elif page and page.excerpt %}{{ page.excerpt | stripHtml }}{% else %}{{ settings.description }}{% endif %}" />
+<meta name="keywords" content="{% if tags %}{{ tags | join(",") }}{% else %}{{ collections.tagList | join(",") }}{% endif %}" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ settings.title }}{% endif %}" />
+<meta property="og:description" content="{% if description %}{{ description }}{% else %}{{ settings.description }}{% endif %}" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ page.url | absoluteUrl }}" />
+{% if settings.images and settings.images[0] %}
+<meta property="og:image" content="{{ settings.images[0] | absoluteUrl }}" />
+{% endif %}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="{% if title %}{{ title }}{% else %}{{ settings.title }}{% endif %}" />
+<meta name="twitter:description" content="{% if description %}{{ description }}{% else %}{{ settings.description }}{% endif %}" />
+
+<!-- Microdata -->
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": settings.title,
+  "url": settings.url
+} | toJson | safe }}</script>

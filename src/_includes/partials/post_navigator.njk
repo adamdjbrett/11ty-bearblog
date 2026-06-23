@@ -1,0 +1,29 @@
+<div style="font-size:0.8em;display:flex;gap:16px;justify-content:center;">
+  <p>
+    {% if collections.posts %}
+    {% set currentIndex = -1 %}
+    {% for post in collections.posts %}
+    {% if post.url == page.url %}{% set currentIndex = loop.index0 %}{% endif %}
+    {% endfor %}
+    {% set previousPost = collections.posts[currentIndex + 1] %}
+    {% if previousPost %}
+    <a href="{{ previousPost.url }}">
+      << Previous Post</a>
+        {% else %}
+        <strike>
+          << Previous Post</strike>
+            {% endif %}
+    {% endif %}
+  </p>
+  <p>|</p>
+  <p>
+    {% if collections.posts %}
+    {% set nextPost = collections.posts[currentIndex - 1] %}
+    {% if nextPost %}
+    <a href="{{ nextPost.url }}">Next Post >></a>
+    {% else %}
+    <strike>Next Post >></strike>
+    {% endif %}
+    {% endif %}
+  </p>
+</div>

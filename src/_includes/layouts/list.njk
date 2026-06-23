@@ -1,0 +1,44 @@
+{% extends "layouts/base.njk" %}
+
+{% block main %}
+<content>
+  {% if tag %}
+  <h3 style="margin-bottom:0">Filtering for "{{ tag }}"</h3>
+  <small>
+    <a href="/blog/">Remove filter</a>
+  </small>
+  {% endif %}
+  <ul class="blog-posts">
+    {% if tag %}
+    {% set listedPosts = collections.posts | postsByTag(tag) %}
+    {% else %}
+    {% set listedPosts = posts or collections.posts %}
+    {% endif %}
+    {% for post in listedPosts %}
+    <li>
+      <span>
+        <i>
+          <time datetime="{{ post.date | htmlDateString }}">
+            {{ post.date | readableDate }}
+          </time>
+        </i>
+      </span>
+      <a href="{{ post.url }}">{{ post.data.title }}</a>
+    </li>
+    {% else %}
+    <li>
+      No posts yet
+    </li>
+    {% endfor %}
+  </ul>
+  {% if not tag %}
+  <small>
+    <div>
+      {% for tagName in collections.tagList %}
+      <a href="/tags/{{ tagName | slugify }}/">#{{ tagName }}</a>&nbsp;
+      {% endfor %}
+    </div>
+  </small>
+  {% endif %}
+</content>
+{% endblock %}

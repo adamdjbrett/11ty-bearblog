@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="{{ settings.language or 'en-US' }}">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% include "partials/favicon.njk" %}
+  <title>{% block title %}{% if title %}{{ title }} | {% endif %}{{ settings.title }}{% endblock %}</title>
+
+  {% include "partials/seo_tags.njk" %}
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <link rel="alternate" type="application/atom+xml" href="{{ settings.feed.atom }}" title="{{ settings.title }}" />
+  <link rel="alternate" type="application/feed+json" href="{{ settings.feed.json }}" title="{{ settings.title }}" />
+  <link rel="alternate" type="text/plain" href="{{ settings.feed.twtxt }}" title="{{ settings.title }}" />
+
+  {% include "partials/style.njk" %}
+
+  <!-- A partial to be overwritten by the user.
+  Simply place a custom_head.njk into
+  your local src/_includes/partials-directory -->
+  {% include "partials/custom_head.njk" %}
+</head>
+
+<body>
+  <header>
+    {% include "partials/header.njk" %}
+  </header>
+  <main>
+    {% block main %}{{ content | safe }}{% endblock %}
+  </main>
+  <footer>
+    {% include "partials/footer.njk" %}
+  </footer>
+
+  <!-- A partial to be overwritten by the user.
+  Simply place a custom_body.njk into
+  your local src/_includes/partials-directory -->
+  {% include "partials/custom_body.njk" %}
+</body>
+
+</html>

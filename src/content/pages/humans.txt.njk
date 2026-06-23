@@ -1,0 +1,25 @@
+---
+permalink: /humans.txt
+layout: false
+eleventyExcludeFromCollections: true
+---
+/* TEAM */
+{%- for person in githubContributors %}
+{% if person.login -%}
+{{ person.login }}
+Site: {{ person.url }}
+Contributions: {{ person.contributions }}
+{% else -%}
+{{ person.name }}
+{% endif %}
+{%- endfor %}
+
+/* THANKS */
+Bear Blog creator: Herman Martinus
+Site: https://bearblog.dev
+Source: https://github.com/HermanMartinus/bearblog
+
+Hugo Bear Blog creator: Jan Raasch
+Source: https://github.com/janraasch/hugo-bearblog
+
+Eleventy port repository: https://github.com/adamdjbrett/11ty-bearblog

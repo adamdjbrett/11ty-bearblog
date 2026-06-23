@@ -1,0 +1,13 @@
+---
+permalink: /feed/twtxt.txt
+layout: false
+eleventyExcludeFromCollections: true
+---
+# nick = {{ settings.author }}
+# url = {{ settings.feed.twtxt | absoluteUrl }}
+{% if settings.favicon %}# avatar = {{ settings.favicon | absoluteUrl }}
+{% endif %}# description = {{ settings.description }}
+
+{% for post in collections.posts -%}
+{{ post.date | jsonFeedDate }}	{{ post.data.title }} {{ post.url | absoluteUrl }}
+{% endfor %}

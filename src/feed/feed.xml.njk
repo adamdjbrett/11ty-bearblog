@@ -1,0 +1,29 @@
+---
+permalink: /feed/feed.xml
+layout: false
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/feed/pretty-atom-feed.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ settings.title | xmlEscape }}</title>
+  <subtitle>{{ settings.description | xmlEscape }}</subtitle>
+  <link href="{{ settings.url | xmlEscape }}" />
+  <link href="{{ settings.feed.atom | absoluteUrl | xmlEscape }}" rel="self" />
+  <id>{{ settings.url | xmlEscape }}</id>
+  <updated>{% if collections.posts.length %}{{ collections.posts[0].date | jsonFeedDate }}{% else %}{{ settings.buildDate }}{% endif %}</updated>
+  <author>
+    <name>{{ settings.author | xmlEscape }}</name>
+  </author>
+{%- for post in collections.posts %}
+  <entry>
+    <title>{{ post.data.title | xmlEscape }}</title>
+    <link href="{{ post.url | absoluteUrl | xmlEscape }}" />
+    <id>{{ post.url | absoluteUrl | xmlEscape }}</id>
+    <updated>{{ post.date | jsonFeedDate }}</updated>
+    <published>{{ post.date | jsonFeedDate }}</published>
+    {% if post.data.description %}<summary>{{ post.data.description | xmlEscape }}</summary>{% endif %}
+    <content type="html">{{ post.templateContent | xmlEscape | safe }}</content>
+  </entry>
+{%- endfor %}
+</feed>

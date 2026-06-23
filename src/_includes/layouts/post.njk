@@ -1,0 +1,27 @@
+{% extends "layouts/base.njk" %}
+
+{% block main %}
+{% if not menu %}
+<h1>{{ title }}</h1>
+<p>
+  <i>
+    <time datetime="{{ date | htmlDateString }}">
+      {{ date | readableDate }}
+    </time>
+  </i>
+</p>
+{% endif %}
+<content>
+  {{ content | safe }}
+</content>
+
+{% if enablePostNavigator or settings.enablePostNavigator %}
+{% include "partials/post_navigator.njk" %}
+{% endif %}
+
+<p>
+  {% for tag in tags %}
+  <a href="/tags/{{ tag | slugify }}/">#{{ tag }}</a>
+  {% endfor %}
+</p>
+{% endblock %}
